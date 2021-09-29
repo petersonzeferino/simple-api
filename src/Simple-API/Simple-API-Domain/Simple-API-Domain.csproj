@@ -9,7 +9,6 @@
     <Folder Include="Commands\" />
     <Folder Include="Entities\" />
     <Folder Include="Enums\" />
-    <Folder Include="Handlers\" />
     <Folder Include="Services\" />
     <Folder Include="Queries\" />
     <Folder Include="ValueObjects\" />
