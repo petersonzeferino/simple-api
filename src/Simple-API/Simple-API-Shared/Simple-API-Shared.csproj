@@ -5,4 +5,8 @@
     <RootNamespace>Simple_API_Shared</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Simple-API-Domain\Simple-API-Domain.csproj" />
+  </ItemGroup>
+
 </Project>
