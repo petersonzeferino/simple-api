@@ -4,6 +4,7 @@ using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -26,6 +27,11 @@ namespace Simple_API_Web
         {
             services.AddControllers()
                 .AddFluentValidation(f => f.RegisterValidatorsFromAssemblyContaining<BaseService>(lifetime: ServiceLifetime.Scoped));
+
+            services.Configure<GzipCompressionProviderOptions>(
+                o => o.Level = System.IO.Compression.CompressionLevel.Fastest);
+            services.AddResponseCompression(
+                o => o.Providers.Add<GzipCompressionProvider>());
 
             services.AddMediatR(typeof(BaseService).Assembly);
 
