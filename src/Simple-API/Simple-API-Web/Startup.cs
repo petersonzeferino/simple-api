@@ -9,7 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using Simple_API_Domain.Services;
+using Simple_API_Domain.Commands;
 
 namespace Simple_API_Web
 {
@@ -26,14 +26,14 @@ namespace Simple_API_Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers()
-                .AddFluentValidation(f => f.RegisterValidatorsFromAssemblyContaining<BaseService>(lifetime: ServiceLifetime.Scoped));
+                .AddFluentValidation(f => f.RegisterValidatorsFromAssemblyContaining<BaseCommand>(lifetime: ServiceLifetime.Scoped));
 
             services.Configure<GzipCompressionProviderOptions>(
                 o => o.Level = System.IO.Compression.CompressionLevel.Fastest);
             services.AddResponseCompression(
                 o => o.Providers.Add<GzipCompressionProvider>());
 
-            services.AddMediatR(typeof(BaseService).Assembly);
+            services.AddMediatR(typeof(BaseCommand).Assembly);
 
             services.AddHealthChecks();
 

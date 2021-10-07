@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Simple_API_Domain.Handlers.Test;
+using Simple_API_Domain.Commands;
 using System.Net;
 using System.Threading.Tasks;
 
@@ -14,6 +14,6 @@ namespace Simple_API_Web.Controllers
         [HttpGet]
         [ProducesResponseType(typeof(Unit), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> Test() =>
-            await Send(new TestRequest());
+            await Send(new TestCommand());
     }
 }
