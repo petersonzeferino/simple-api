@@ -37,30 +37,6 @@ namespace Simple_API_Shared.ValueObjects
             if (value.Length != 11)
                 return false;
 
-            switch (value)
-            {
-                case "11111111111":
-                    return false;
-                case "00000000000":
-                    return false;
-                case "2222222222":
-                    return false;
-                case "33333333333":
-                    return false;
-                case "44444444444":
-                    return false;
-                case "55555555555":
-                    return false;
-                case "66666666666":
-                    return false;
-                case "77777777777":
-                    return false;
-                case "88888888888":
-                    return false;
-                case "99999999999":
-                    return false;
-            }
-
             for (int j = 0; j < 10; j++)
             {
                 if (j.ToString().PadLeft(11, char.Parse(j.ToString())) == value)
